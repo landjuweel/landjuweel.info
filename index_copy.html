@@ -3,398 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Landjuweel 2027</title>
-    <style>
-        :root {
-            /* Upper Section Colors */
-            --purple-dark: #2a0a44;
-            --purple-mid: #5e287e;
-            --pink-soft: #d37993;
-            --yellow-cream: #eedb94;
-            --yellow-bright: #ffd447;
-            --text-light: #ffffff;
-            --text-muted: #2d2426;
-
-            /* Footer Colors */
-            --footer-text: #2b3a39;
-            --footer-heading: #1a2625;
-            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-family);
-            background-color: var(--purple-dark);
-            color: var(--text-light);
-        }
-
-        /* ==========================================
-           HERO & TICKETS SECTION
-        ========================================== */
-        .hero-section {
-            position: relative;
-            background: linear-gradient(
-                    180deg,
-                    #f2cfbf 0%,
-                    #d8a98c 12%,
-                    #ba7d90 28%,
-                    #793e7f 48%,
-                    #491a66 70%,
-                    #2a0a44 100%
-            );
-            padding: 40px 20px 60px 20px;
-            text-align: center;
-            overflow: hidden;
-            isolation: isolate;
-        }
-
-        /* Decorative Stars */
-        .star {
-            position: absolute;
-            color: var(--yellow-bright);
-            opacity: 0.85;
-            user-select: none;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .hero-section > *:not(.star) {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Titles & Text */
-        .main-title {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-size: clamp(2.8rem, 8vw, 5.5rem);
-            font-weight: 900;
-            color: #cd3752;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
-        }
-
-        .intro-text {
-            /*max-width: 680px;*/
-            max-width: 67%;
-            margin: 0 auto 48px auto;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            font-weight: 500;
-            color: #24591E;
-        }
-
-        .tickets-section {
-            margin-bottom: 48px;
-        }
-
-        .tickets-title {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-size: clamp(2.2rem, 6vw, 3.8rem);
-            letter-spacing: 3px;
-            color: var(--yellow-cream);
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .tickets-subtitle {
-            font-size: 48px!important;
-            line-height: 1.5;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 24px;
-        }
-
-        /* CTA Button */
-        .btn-tickets {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #ffffff;
-            color: #371059;
-            padding: 8px 18px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-tickets:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-        }
-
-        /* Video Banner */
-        .video-container {
-            /*max-width: 840px;*/
-            max-width: 80%;
-            margin: 0 auto;
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .video-thumbnail {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background-color: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            transition: transform 0.2s ease;
-        }
-
-        .play-button:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .play-button::after {
-            content: "";
-            display: block;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 10px 0 10px 18px;
-            border-color: transparent transparent transparent #371059;
-            margin-left: 4px;
-        }
-
-        /* ==========================================
-           FOOTER SECTION
-        ========================================== */
-        .site-footer {
-            background: linear-gradient(180deg, #9fe6de 0%, #b8eee8 50%, #d8f7f3 100%);
-            color: var(--footer-text);
-            padding: 40px 24px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 36px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-            text-align: left;
-        }
-
-        .footer-col h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--footer-heading);
-            margin-bottom: 16px;
-        }
-
-        .footer-col p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
-            color: var(--footer-text);
-        }
-
-        .footer-col a {
-            color: var(--footer-text);
-            text-decoration: underline;
-            transition: opacity 0.2s ease;
-        }
-
-        .footer-col a:hover {
-            opacity: 0.75;
-        }
-
-        .address-block {
-            font-style: normal;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            margin-top: 12px;
-        }
-
-        .address-block strong {
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        /* Social Icons */
-        .social-links {
-            display: flex;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border: 2px solid var(--footer-text);
-            border-radius: 50%;
-            color: var(--footer-text);
-            text-decoration: none;
-            transition: transform 0.2s, background-color 0.2s;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-2px);
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        .social-icon svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-
-        /* Footer Bottom Bar */
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            padding-top: 20px;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .footer-links a {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--footer-heading);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Background Watermark Logo */
-        .footer-watermark {
-            position: absolute;
-            right: 5%;
-            bottom: 5%;
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: rgba(255, 255, 255, 0.4);
-            user-select: none;
-            pointer-events: none;
-            text-transform: capitalize;
-        }
-
-        /* ==========================================
-           MEDIA QUERIES (DESKTOP RESPONSIVENESS)
-        ========================================== */
-        @media (min-width: 768px) {
-            .hero-section {
-                padding: 60px 40px 80px 40px;
-            }
-
-            .intro-text {
-                font-size: 1.05rem;
-            }
-
-            .tickets-subtitle {
-                font-size: 1.35rem;
-            }
-
-            .play-button {
-                width: 72px;
-                height: 72px;
-            }
-
-            .site-footer {
-                padding: 60px 48px 80px 48px;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 80px;
-            }
-
-            .footer-bottom {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-end;
-                margin-top: 40px;
-            }
-
-            .footer-watermark {
-                font-size: 7.5rem;
-                right: 8%;
-                bottom: 8%;
-            }
-        }
-
-
-        @font-face {
-            font-family: "Borna";
-            src: url("font/borna-medium.otf") format("opentype")
-            /*url("mycustomfont.woff") format("woff"),*/
-            /*url("mycustomfont.ttf") format("truetype");*/
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
 <!-- Top Hero & Festival Section -->
 <section class="hero-section">
     <!-- Star Decorations -->
-    <img src="img/star_4.png" class="star" style="top: 3%; left: 3%; font-size: 2.5rem;">
+    <img src="assets/img/star_4.png" class="star" style="top: 3%; left: 3%; font-size: 2.5rem;">
 <!--    <span class="star" style="top: 3%; left: 3%; font-size: 2.5rem;"></span>-->
-    <img src="img/star_3.png" class="star" style="top: 4%; right: 4%; font-size: 2.2rem;" height="7%">
+    <img src="assets/img/star_3.png" class="star" style="top: 4%; right: 4%; font-size: 2.2rem;" height="7%">
 <!--    <span class="star" style="top: 4%; right: 4%; font-size: 2.2rem;">✶</span>-->
 <!--    <span class="star" style="top: 18%; left: 23%; font-size: 3.5rem;">★</span>-->
-    <img src="img/star_5.png" class="star" style="top: 20%; left: 15%; font-size: 3.5rem;" height="3%">
+    <img src="assets/img/star_5.png" class="star" style="top: 20%; left: 15%; font-size: 3.5rem;" height="3%">
 <!--    <span class="star" style="top: 24%; right: 8%; font-size: 3rem;">✶</span>-->
-    <img src="img/star_4.png" class="star" style="top: 27%; right: 8%; font-size: 3rem;" >
+    <img src="assets/img/star_4.png" class="star" style="top: 27%; right: 8%; font-size: 3rem;" >
 <!--    <span class="star" style="top: 32%; right: 18%; font-size: 1.5rem;">✦</span>-->
-    <img src="img/star_2.png" class="star" style="top: 47%; right: 18%; font-size: 1.5rem;" height="3%">
+    <img src="assets/img/star_2.png" class="star" style="top: 47%; right: 18%; font-size: 1.5rem;" height="3%">
 <!--    <span class="star" style="top: 42%; left: 9%; font-size: 2rem;">✦</span>-->
-    <img src="img/star_1.png" class="star" style="top: 33%; left: 9%; font-size: 2rem;" height="4%">
+    <img src="assets/img/star_1.png" class="star" style="top: 33%; left: 9%; font-size: 2rem;" height="4%">
 <!--    <span class="star" style="top: 45%; left: 25%; font-size: 2.2rem;">★</span>-->
-    <img src="img/star_3.png" class="star" style="top: 40%; left: 28%; font-size: 2.2rem;" height="7%">
+    <img src="assets/img/star_3.png" class="star" style="top: 40%; left: 28%; font-size: 2.2rem;" height="7%">
 <!--    <span class="star" style="top: 48%; right: 39%; font-size: 1.2rem;">✦</span>-->
 <!--    <span class="star" style="top: 43%; right: 33%; font-size: 3rem;">★</span>-->
 <!--    <span class="star" style="top: 44%; right: 9%; font-size: 2.4rem;">✶</span>-->
 
     <!-- Main Title -->
-    <img src="img/landjuweel-logo.png" width="75%">
+    <img src="assets/img/landjuweel-logo.png" width="75%">
 
     <br>
     <br>
@@ -407,7 +42,7 @@
 
     <!-- Tickets Heading & Subtitle -->
     <div class="tickets-section" style="margin-top: 197px">
-        <img src="img/tickets-logo.png" width="25%">
+        <img src="assets/img/tickets-logo.png" width="25%">
 <!--        <h2 class="tickets-title">TICKETS</h2>-->
         <p class="tickets-subtitle" style="margin-top: 20px; font-family: Borna">
             Ben jij een vroege paradijsvogel?<br>
@@ -497,7 +132,7 @@
 
     <!-- Background Watermark Logo -->
 <!--    <div class="footer-watermark">Ruigoord</div>-->
-    <div class="footer-watermark" style="margin-right: 150px"><img src="img/ruigoord-footer-logo.png" width="560"></div>
+    <div class="footer-watermark" style="margin-right: 150px"><img src="assets/img/ruigoord-footer-logo.png" width="560"></div>
 </footer>
 
 

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landjuweel 2027</title>
+    <style>
+        :root {
+            /* Upper Section Colors */
+            --purple-dark: #2a0a44;
+            --purple-mid: #5e287e;
+            --pink-soft: #d37993;
+            --yellow-cream: #eedb94;
+            --yellow-bright: #ffd447;
+            --text-light: #ffffff;
+            --text-muted: #2d2426;
+
+            /* Footer Colors */
+            --footer-text: #2b3a39;
+            --footer-heading: #1a2625;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--purple-dark);
+            color: var(--text-light);
+        }
+
+        /* ==========================================
+           HERO & TICKETS SECTION
+        ========================================== */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(
+                    180deg,
+                    #f2cfbf 0%,
+                    #d8a98c 12%,
+                    #ba7d90 28%,
+                    #793e7f 48%,
+                    #491a66 70%,
+                    #2a0a44 100%
+            );
+            padding: 40px 20px 60px 20px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Decorative Stars */
+        .star {
+            position: absolute;
+            color: var(--yellow-bright);
+            opacity: 0.85;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Titles & Text */
+        .main-title {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 900;
+            color: #cd3752;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        .intro-text {
+            /*max-width: 680px;*/
+            max-width: 67%;
+            margin: 0 auto 48px auto;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            font-weight: 500;
+            color: #24591E;
+        }
+
+        .tickets-section {
+            margin-bottom: 48px;
+        }
+
+        .tickets-title {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            letter-spacing: 3px;
+            color: var(--yellow-cream);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .tickets-subtitle {
+            font-size: 48px!important;
+            line-height: 1.5;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 24px;
+        }
+
+        /* CTA Button */
+        .btn-tickets {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffffff;
+            color: #371059;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-tickets:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        /* Video Banner */
+        .video-container {
+            /*max-width: 840px;*/
+            max-width: 80%;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-button::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent #371059;
+            margin-left: 4px;
+        }
+
+        /* ==========================================
+           FOOTER SECTION
+        ========================================== */
+        .site-footer {
+            background: linear-gradient(180deg, #9fe6de 0%, #b8eee8 50%, #d8f7f3 100%);
+            color: var(--footer-text);
+            padding: 40px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            text-align: left;
+        }
+
+        .footer-col h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--footer-heading);
+            margin-bottom: 16px;
+        }
+
+        .footer-col p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            color: var(--footer-text);
+        }
+
+        .footer-col a {
+            color: var(--footer-text);
+            text-decoration: underline;
+            transition: opacity 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            opacity: 0.75;
+        }
+
+        .address-block {
+            font-style: normal;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-top: 12px;
+        }
+
+        .address-block strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Social Icons */
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--footer-text);
+            border-radius: 50%;
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-2px);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .social-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Footer Bottom Bar */
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-top: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--footer-heading);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Background Watermark Logo */
+        .footer-watermark {
+            position: absolute;
+            right: 5%;
+            bottom: 5%;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.4);
+            user-select: none;
+            pointer-events: none;
+            text-transform: capitalize;
+        }
+
+        /* ==========================================
+           MEDIA QUERIES (DESKTOP RESPONSIVENESS)
+        ========================================== */
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 60px 40px 80px 40px;
+            }
+
+            .intro-text {
+                font-size: 1.05rem;
+            }
+
+            .tickets-subtitle {
+                font-size: 1.35rem;
+            }
+
+            .play-button {
+                width: 72px;
+                height: 72px;
+            }
+
+            .site-footer {
+                padding: 60px 48px 80px 48px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-top: 40px;
+            }
+
+            .footer-watermark {
+                font-size: 7.5rem;
+                right: 8%;
+                bottom: 8%;
+            }
+        }
+
+
+        @font-face {
+            font-family: "Borna";
+            src: url("font/borna-medium.otf") format("opentype")
+            /*url("mycustomfont.woff") format("woff"),*/
+            /*url("mycustomfont.ttf") format("truetype");*/
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Hero & Festival Section -->
+<section class="hero-section">
+    <!-- Star Decorations -->
+    <img src="img/star_4.png" class="star" style="top: 3%; left: 3%; font-size: 2.5rem;">
+<!--    <span class="star" style="top: 3%; left: 3%; font-size: 2.5rem;"></span>-->
+    <img src="img/star_3.png" class="star" style="top: 4%; right: 4%; font-size: 2.2rem;" height="7%">
+<!--    <span class="star" style="top: 4%; right: 4%; font-size: 2.2rem;">✶</span>-->
+<!--    <span class="star" style="top: 18%; left: 23%; font-size: 3.5rem;">★</span>-->
+    <img src="img/star_5.png" class="star" style="top: 20%; left: 15%; font-size: 3.5rem;" height="3%">
+<!--    <span class="star" style="top: 24%; right: 8%; font-size: 3rem;">✶</span>-->
+    <img src="img/star_4.png" class="star" style="top: 27%; right: 8%; font-size: 3rem;" >
+<!--    <span class="star" style="top: 32%; right: 18%; font-size: 1.5rem;">✦</span>-->
+    <img src="img/star_2.png" class="star" style="top: 47%; right: 18%; font-size: 1.5rem;" height="3%">
+<!--    <span class="star" style="top: 42%; left: 9%; font-size: 2rem;">✦</span>-->
+    <img src="img/star_1.png" class="star" style="top: 33%; left: 9%; font-size: 2rem;" height="4%">
+<!--    <span class="star" style="top: 45%; left: 25%; font-size: 2.2rem;">★</span>-->
+    <img src="img/star_3.png" class="star" style="top: 40%; left: 28%; font-size: 2.2rem;" height="7%">
+<!--    <span class="star" style="top: 48%; right: 39%; font-size: 1.2rem;">✦</span>-->
+<!--    <span class="star" style="top: 43%; right: 33%; font-size: 3rem;">★</span>-->
+<!--    <span class="star" style="top: 44%; right: 9%; font-size: 2.4rem;">✶</span>-->
+
+    <!-- Main Title -->
+    <img src="img/landjuweel-logo.png" width="75%">
+
+    <br>
+    <br>
+    <!-- Intro Paragraph -->
+    <div class="intro-text" style="font-family: Borna; font-size: 28px">
+        <p>Landjuweel '26 was magisch! Wát een vreugde al die mooie mensen bij elkaar.</p>
+        <p>Was je erbij? Laat je nog even terugvoeren met de after movie hieronder.</p>
+        <p>Was je er niet? Ontdek dan de ongelofelijke vibe van ons heerlijke festival, waar je de allermooiste mensen op aarde ontmoet. En, koop alvast je kaarten voor volgend jaar!</p>
+    </div>
+
+    <!-- Tickets Heading & Subtitle -->
+    <div class="tickets-section" style="margin-top: 197px">
+        <img src="img/tickets-logo.png" width="25%">
+<!--        <h2 class="tickets-title">TICKETS</h2>-->
+        <p class="tickets-subtitle" style="margin-top: 20px; font-family: Borna">
+            Ben jij een vroege paradijsvogel?<br>
+            Koop hier alvast je ticket voor Landjuweel 2027.<br>
+            Het wordt geweldig!
+        </p>
+
+        <!-- Action Button -->
+        <a href="#" class="btn-tickets">
+            Tickets <span>➔</span>
+        </a>
+    </div>
+
+    <!-- Video Placeholder with Play Button -->
+    <div class="video-container">
+        <video class="video-thumbnail"  controls>
+            <source src="video/16x9_LANDJUWEEL_2026_EDIT_v3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+<!--        <img class="video-thumbnail" src="https://next.frame.io/share/6f10b5d3-a2d1-4ffd-8eb3-fec6482e5367/view/980d327e-a3e3-4ef4-a294-39484712c82a" alt="Landjuweel Aftermovie Preview">-->
+<!--        <div class="play-button" aria-label="Play Aftermovie"></div>-->
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="site-footer">
+    <div class="footer-container">
+
+        <!-- Top Content Grid -->
+        <div class="footer-content">
+
+            <!-- Left Column: Ontdek Ruigoord -->
+            <div class="footer-col">
+                <h3>Ontdek Ruigoord</h3>
+                <p>Verscholen in het Amsterdamse havensgebied ligt het groene kunstenaarsdorp Ruigoord.</p>
+                <p>Kijk op onze website en ontdek de prachtige wereld van deze bijzondere culturele vrijhaven.</p>
+            </div>
+
+            <!-- Right Column: Contact -->
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p><a href="mailto:kantoor@ruigoord.nl">kantoor@ruigoord.nl</a></p>
+
+                <address class="address-block">
+                    <strong>Adres</strong>
+                    Kerk / kantoor:<br>
+                    Ruigoord 76<br>
+                    1047 HH Amsterdam
+                </address>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/landjuweel.festival/" class="social-icon" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/landjuweelfestival" class="social-icon" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:kantoor@ruigoord.nl" class="social-icon" aria-label="Email">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.828h-18.879l5.613-6.823zm9.201-1.259l4.623-3.743v9.444l-4.623-5.701z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom Links -->
+        <div class="footer-bottom">
+            <ul class="footer-links">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Algemene voorwaarden</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Background Watermark Logo -->
+<!--    <div class="footer-watermark">Ruigoord</div>-->
+    <div class="footer-watermark" style="margin-right: 150px"><img src="img/ruigoord-footer-logo.png" width="560"></div>
+</footer>
+
+
+</body>
+</html>

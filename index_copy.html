@@ -49,6 +49,7 @@
             padding: 40px 20px 60px 20px;
             text-align: center;
             overflow: hidden;
+            isolation: isolate;
         }
 
         /* Decorative Stars */
@@ -58,6 +59,12 @@
             opacity: 0.85;
             user-select: none;
             pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-section > *:not(.star) {
+            position: relative;
+            z-index: 1;
         }
 
         /* Titles & Text */

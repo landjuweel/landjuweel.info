@@ -103,23 +103,29 @@ body {
 
 /* CTA Button */
 .btn-tickets {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	background-color: #ffffff;
-	color: #371059;
-	padding: 8px 18px;
-	border-radius: 4px;
+	display: inline-block;
+	line-height: 0;
 	text-decoration: none;
-	font-weight: 600;
-	font-size: 0.9rem;
-	box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-tickets img {
+	display: block;
+	width: auto;
+	height: 32px;
+	max-width: 100%;
 }
 
 .btn-tickets:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.btn-tickets:focus-visible {
+	outline: 3px solid #ffffff;
+	outline-offset: 4px;
 }
 
 /* Video Banner */

@@ -60,6 +60,9 @@
                 Your browser does not support the video tag.
             </video>
             <img class="video-overlay-image" src="assets/img/theater-overlay.png" alt="" aria-hidden="true">
+            <button class="video-play-btn" id="video-play-btn" type="button" aria-label="Speel video af">
+                <img src="assets/img/play.svg" alt="" aria-hidden="true">
+            </button>
         </div>
 
 
@@ -139,7 +142,13 @@
     (function () {
         var wrap = document.getElementById("video-overlay-wrap");
         var video = document.getElementById("aftermovie-player");
-        if (!wrap || !video) return;
+        var playBtn = document.getElementById("video-play-btn");
+        if (!wrap || !video || !playBtn) return;
+
+        playBtn.addEventListener("click", function () {
+            var p = video.play();
+            if (p && p.catch) p.catch(function () {});
+        });
 
         video.addEventListener("play", function () {
             wrap.classList.add("has-started");

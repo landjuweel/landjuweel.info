@@ -1,12 +1,8 @@
 :root {
 	/* Upper Section Colors */
 	--purple-dark: #2a0a44;
-	--purple-mid: #5e287e;
-	--pink-soft: #d37993;
-	--yellow-cream: #eedb94;
 	--yellow-bright: #ffd447;
 	--text-light: #ffffff;
-	--text-muted: #2d2426;
 
 	/* Footer Colors */
 	--footer-text: #2b3a39;
@@ -57,40 +53,17 @@ body {
 	z-index: 1;
 }
 
-/* Titles & Text */
-.main-title {
-	font-family: 'Georgia', 'Times New Roman', serif;
-	font-size: clamp(2.8rem, 8vw, 5.5rem);
-	font-weight: 900;
-	color: #cd3752;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	margin-bottom: 24px;
-	text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
-}
-
 .intro-text {
-	/*max-width: 680px;*/
 	max-width: 67%;
 	margin: 0 auto 48px auto;
 	font-size: 0.95rem;
 	line-height: 1.6;
-	color: var(--text-muted);
 	font-weight: 500;
 	color: #24591E;
 }
 
 .tickets-section {
 	margin-bottom: 48px;
-}
-
-.tickets-title {
-	font-family: 'Georgia', 'Times New Roman', serif;
-	font-size: clamp(2.2rem, 6vw, 3.8rem);
-	letter-spacing: 3px;
-	color: var(--yellow-cream);
-	text-transform: uppercase;
-	margin-bottom: 20px;
 }
 
 .tickets-subtitle {
@@ -129,13 +102,23 @@ body {
 }
 
 .video-section {
-	margin-top: 0px;
-    background-color: #412067;
+	margin-top: -3px;
+	position: relative;
+	background-color: #412067;
+}
+
+.video-section::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: -4px;
+	height: 4px;
+	background-color: #412067;
 }
 
 /* Video Banner */
 .video-container {
-	/*max-width: 840px;*/
 	max-width: 80%;
 	margin: 0 auto;
 	position: relative;
@@ -197,43 +180,15 @@ body {
 	display: none;
 }
 
-.play-button {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 60px;
-	height: 60px;
-	background-color: #ffffff;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-	transition: transform 0.2s ease;
-}
-
-.play-button:hover {
-	transform: translate(-50%, -50%) scale(1.1);
-}
-
-.play-button::after {
-	content: "";
-	display: block;
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 10px 0 10px 18px;
-	border-color: transparent transparent transparent #371059;
-	margin-left: 4px;
-}
-
 /* ==========================================
    FOOTER SECTION
 ========================================== */
 .site-footer {
-	background: linear-gradient(180deg, #9fe6de 0%, #b8eee8 50%, #d8f7f3 100%);
+	background-color: #b8eee8;
+	background-image: url("../img/footer-gradient.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	color: var(--footer-text);
 	padding: 40px 24px;
 	position: relative;
@@ -353,15 +308,18 @@ body {
 /* Background Watermark Logo */
 .footer-watermark {
 	position: absolute;
-	right: 5%;
-	bottom: 5%;
-	font-size: 4rem;
-	font-weight: 900;
-	letter-spacing: 2px;
-	color: rgba(255, 255, 255, 0.4);
+	left: 50%;
+	bottom: 12px;
+	transform: translateX(-50%);
 	user-select: none;
 	pointer-events: none;
-	text-transform: capitalize;
+}
+
+.footer-watermark img {
+	display: block;
+	width: clamp(220px, 62vw, 560px);
+	max-width: calc(100vw - 32px);
+	height: auto;
 }
 
 /* ==========================================
@@ -378,11 +336,6 @@ body {
 
 	.tickets-subtitle {
 		font-size: 1.35rem;
-	}
-
-	.play-button {
-		width: 72px;
-		height: 72px;
 	}
 
 	.site-footer {
@@ -402,16 +355,21 @@ body {
 	}
 
 	.footer-watermark {
-		font-size: 7.5rem;
-		right: 8%;
-		bottom: 8%;
+		left: auto;
+		right: max(48px, calc((100vw - 1200px) / 2 + 48px));
+		transform: none;
+		bottom: 20px;
+	}
+
+	.footer-watermark img {
+		width: clamp(260px, 30vw, 560px);
+		max-width: 42vw;
 	}
 }
 
 
 @font-face {
 	font-family: "Borna";
-	src: url("../font/borna-medium.otf") format("opentype")
-	/*url("mycustomfont.woff") format("woff"),*/
-	/*url("mycustomfont.ttf") format("truetype");*/
+	src: url("../font/borna-medium.otf") format("opentype");
+	font-display: swap;
 }

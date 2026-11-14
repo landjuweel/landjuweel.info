@@ -144,6 +144,7 @@ body {
 	aspect-ratio: 16 / 9;
 	overflow: hidden;
 	background-color: #000;
+	line-height: 0;
 }
 
 .video-overlay-image {
@@ -182,6 +183,38 @@ body {
 
 .video-overlay-wrap.has-started .video-play-btn {
 	display: none;
+}
+
+@media (max-width: 767px) {
+	.video-section {
+		padding-bottom: 10px;
+	}
+}
+
+/* iOS Safari: prevent thin right-edge stripe from subpixel compositing */
+@supports (-webkit-touch-callout: none) {
+	.video-overlay-wrap {
+		-webkit-mask-image: -webkit-radial-gradient(white, black);
+	}
+
+	.video-thumbnail,
+	.video-overlay-image {
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+
+	.video-thumbnail {
+		width: calc(100% + 2px);
+		margin-left: -1px;
+	}
+
+	.video-overlay-image {
+		left: -1px;
+		right: -1px;
+		width: auto;
+	}
 }
 
 /* ==========================================

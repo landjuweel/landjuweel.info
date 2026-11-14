@@ -50,30 +50,22 @@
         </a>
     </div>
 
-
-
+</section>
+<section class="video-section">
     <!-- Video Placeholder with Play Button -->
-    <div class="video-container" style="margin-top: 300px">
-        <video class="video-thumbnail"  controls>
-            <source src="video/aftermovie/master.m3u8" type="application/x-mpegURL">
-            Your browser does not support the video tag.
-        </video>
+    <div class="video-container">
+        <div class="video-overlay-wrap" id="video-overlay-wrap">
+            <video class="video-thumbnail" id="aftermovie-player" controls preload="metadata" poster="video/aftermovie/poster.jpg">
+                <source src="video/aftermovie/master.m3u8" type="application/x-mpegURL">
+                Your browser does not support the video tag.
+            </video>
+            <img class="video-overlay-image" src="assets/img/theater-overlay.png" alt="" aria-hidden="true">
+        </div>
 
 
     </div>
 </section>
 
-
-<!--<section style="background-color: #442d68">-->
-<!--    <div class="video-container" style="margin-top: 300px">-->
-<!--        <video class="video-thumbnail"  controls>-->
-<!--            <source src="video/16x9_LANDJUWEEL_2026_EDIT_v3.mp4" type="video/mp4">-->
-<!--            Your browser does not support the video tag.-->
-<!--        </video>-->
-
-
-<!--    </div>-->
-<!--</section>-->
 
 <!-- Footer Section -->
 <footer class="site-footer">
@@ -142,6 +134,18 @@
 <!--    <div class="footer-watermark">Ruigoord</div>-->
     <div class="footer-watermark" style="margin-right: 150px"><img src="assets/img/ruigoord-footer-logo.png" width="560"></div>
 </footer>
+
+<script>
+    (function () {
+        var wrap = document.getElementById("video-overlay-wrap");
+        var video = document.getElementById("aftermovie-player");
+        if (!wrap || !video) return;
+
+        video.addEventListener("play", function () {
+            wrap.classList.add("has-started");
+        });
+    })();
+</script>
 
 
 </body>

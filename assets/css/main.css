@@ -101,6 +101,32 @@ body {
 	outline-offset: 4px;
 }
 
+.ticket-cta-slot {
+	margin-top: 8px;
+	min-height: 44px;
+}
+
+.ticket-countdown {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 18px;
+	min-height: 44px;
+	border: 2px solid rgba(255, 255, 255, 0.7);
+	border-radius: 999px;
+	background: rgba(42, 10, 68, 0.28);
+	color: #ffffff;
+	font-family: "Borna", var(--font-family);
+	font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+	line-height: 1;
+	letter-spacing: 0.02em;
+	text-align: center;
+}
+
+.is-hidden {
+	display: none;
+}
+
 .video-section {
 	margin-top: -3px;
 	padding-bottom: 25px;

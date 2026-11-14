@@ -44,10 +44,13 @@
             Het wordt geweldig!
         </p>
 
-        <!-- Action Button -->
-        <a href="#" class="btn-tickets">
-            <img src="assets/img/ticket-button.png" alt="Koop tickets voor Landjuweel 2027">
-        </a>
+        <!-- Countdown / Action Button -->
+        <div class="ticket-cta-slot">
+            <div class="ticket-countdown" id="ticket-countdown" role="timer" aria-live="polite"></div>
+            <a href="#" class="btn-tickets is-hidden" id="ticket-button">
+                <img src="assets/img/ticket-button.png" alt="Koop tickets voor Landjuweel 2027">
+            </a>
+        </div>
     </div>
 
 </section>
@@ -153,6 +156,52 @@
         video.addEventListener("play", function () {
             wrap.classList.add("has-started");
         });
+    })();
+
+    (function () {
+        var countdownEl = document.getElementById("ticket-countdown");
+        var ticketButton = document.getElementById("ticket-button");
+        if (!countdownEl || !ticketButton) return;
+
+        var now = new Date();
+        var target = new Date(now.getFullYear(), 10, 30, 23, 59, 59, 999);
+        if (now > target) {
+            target = new Date(now.getFullYear() + 1, 10, 30, 23, 59, 59, 999);
+        }
+
+        function pad(value) {
+            return String(value).padStart(2, "0");
+        }
+
+        function showButton() {
+            countdownEl.classList.add("is-hidden");
+            ticketButton.classList.remove("is-hidden");
+        }
+
+        function updateCountdown() {
+            var diff = target.getTime() - Date.now();
+
+            if (diff <= 0) {
+                showButton();
+                return false;
+            }
+
+            var totalSeconds = Math.floor(diff / 1000);
+            var days = Math.floor(totalSeconds / 86400);
+            var hours = Math.floor((totalSeconds % 86400) / 3600);
+            var minutes = Math.floor((totalSeconds % 3600) / 60);
+            var seconds = totalSeconds % 60;
+
+            countdownEl.textContent = "Tickets live over " + days + "d " + pad(hours) + "u " + pad(minutes) + "m " + pad(seconds) + "s";
+            return true;
+        }
+
+        if (!updateCountdown()) return;
+        var timerId = setInterval(function () {
+            if (!updateCountdown()) {
+                clearInterval(timerId);
+            }
+        }, 1000);
     })();
 </script>
 
